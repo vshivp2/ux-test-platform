@@ -7,9 +7,9 @@
 
     <!-- For Desktop -->
     <parameter name="desktop" value="on"></parameter><!-- Set the tests to run Desktop -->
-    <parameter name="platform" value="Windows 10"></parameter><!-- MAC or Windows -->
-    <parameter name="sauceBrowser" value="firefox"></parameter><!-- browser on sauce machine, eg. safari, chrome, ie -->
-    <parameter name="sauceBrowserVer" value="45.0"></parameter><!-- browser version on sauce machine -->
+    <parameter name="platform" value="OS X 10.11"></parameter><!-- MAC or Windows -->
+    <parameter name="sauceBrowser" value="chrome"></parameter><!-- browser on sauce machine, eg. safari, chrome, ie -->
+    <parameter name="sauceBrowserVer" value="48.0"></parameter><!-- browser version on sauce machine -->
     <parameter name="localBrowser" value="firefox"></parameter><!-- browser on your local. eg firefox -->
 
     <!-- For Mobile -->
@@ -45,7 +45,6 @@ Desktop:-
         |Windows 10  |firefox      |45.0    |
         |Windows 10  |ie           |11.103  |
         |Windows 10  |edge         |13.10586|
-
 Mobile:-
         |appiumDriver  | mobDeviceName              | mobilePlatformVer | mobBrowser | appiumVer|
         |iOS           | iPhone 6 Plus              | 9.2               | Safari     | 1.5.2    |
