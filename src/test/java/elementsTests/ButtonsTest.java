@@ -1,4 +1,4 @@
-package elementsTests;
+/*package elementsTests;
 
 import io.appium.java_client.TouchAction;
 import org.apache.log4j.Logger;
@@ -15,9 +15,9 @@ import utilities.BaseClass;
 import java.io.File;
 import java.lang.reflect.Method;
 
-/**
+*//**
  * Created by umahaea on 4/13/16.
- */
+ *//*
 public class ButtonsTest extends BaseClass {
 
     private final String url = "http://localhost:8000/src/main/java/elements/fixtures/buttons.html";
@@ -586,9 +586,9 @@ public class ButtonsTest extends BaseClass {
         Assert.assertTrue(isCSSProperty);
     }
 
-    /***************
+    *//***************
      * Mobile Tests
-     ***************/
+     ***************//*
 
     @Test(testName = "Mobile: Default Button Test", dataProvider = "Default Button Test Data", groups = {"mobile"})
     private void defaultButtonMobileTest(String cssProperty, String[] expectedCSSValue) throws Exception {
@@ -650,9 +650,9 @@ public class ButtonsTest extends BaseClass {
         Assert.assertTrue(isCSSProperty);
     }
 
-    /*************
+    *//*************
      * Common methods
-     ************/
+     ************//*
     private void chooseEnv() throws InterruptedException {
         if (env.equals("sauce")) {
             commonUtils.getUrl(url);
@@ -671,3 +671,4 @@ public class ButtonsTest extends BaseClass {
         System.out.println("_________________________________________________");
     }
 }
+*/
