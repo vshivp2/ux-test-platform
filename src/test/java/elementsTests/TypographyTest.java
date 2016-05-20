@@ -323,7 +323,7 @@ public class TypographyTest extends BaseClass {
         String bckgrnd = commonUtils.getCSSValue(typoPgObj.inlne_code, "background-color");
         boolean isFontFamily = commonUtils.assertCSSProperties("font-family", fontFamily, fntFamly);
         if (isFontFamily == false) {
-            System.out.println("Font Family is not as per the spec");
+            System.out.println(fontFamily + "Font Family is not as per the spec");
         }
         //commonUtils.assertValue(fontFamily, fntFamly, "Inline Code Test Font Family is not " + fntFamly);
         commonUtils.assertValue(pdngLft, pddngLft, "Inline Code Test Padding Left is not " + pdngLft);
