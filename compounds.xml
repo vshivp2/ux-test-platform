@@ -27,7 +27,7 @@
             </run>
         </groups>
         <classes>
-            <class name="compounds.CalendarFunctionTest"/>
+            <class name="compoundsTest.CalendarFunctionTest"/>
         </classes>
     </test>
 </suite>
