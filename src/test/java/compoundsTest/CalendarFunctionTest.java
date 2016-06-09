@@ -22,7 +22,7 @@ import utilities.BaseClass;
 
 public class CalendarFunctionTest extends BaseClass {
 	private final String url = "http://localhost:8000/#/components/calendar";
-	private String inputFilePath = "http://54.209.35.224/#/components/calendar";
+	private String inputFilePath = "http://localhost:8000/#/components/calendar";
 	private String localUrl = new File(inputFilePath).getAbsolutePath();
 	private static String env;
 	private static String mobileDevice;
