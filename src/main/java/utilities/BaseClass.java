@@ -119,6 +119,7 @@ public class BaseClass {
                 appHeaderPgObj = new AppHeaderPageObjects(driver);
                 conxHelpPgObj = new ContextualHelpPageObjects(driver);
                 inputsPgObj = new InputsPageObjects(driver);
+                clndrPgObj = new CalendarPageObjects(appium);
                 commonUtils = new CommonUtils(driver);
                 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             }
