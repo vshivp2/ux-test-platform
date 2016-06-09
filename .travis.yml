@@ -15,10 +15,10 @@ before_script:
 - python -m SimpleHTTPServer &
 
 script:
-- chmod 777 ./src/main/shell_scripts/elements.sh
-- ./src/main/shell_scripts/elements.sh
-- chmod 777 ./src/main/shell_scripts/origami-v2/origami-v2.sh
-- ./src/main/shell_scripts/origami-v2/origami-v2.sh
+#- chmod 777 ./src/main/shell_scripts/elements.sh
+#- ./src/main/shell_scripts/elements.sh
+#- chmod 777 ./src/main/shell_scripts/origami-v2/origami-v2.sh
+#- ./src/main/shell_scripts/origami-v2/origami-v2.sh
 - chmod 777 ./src/main/shell_scripts/compounds.sh
 - ./src/main/shell_scripts/compounds.sh
 - mvn test
