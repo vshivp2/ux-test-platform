@@ -1,16 +1,18 @@
 package utilities;
 
 import io.appium.java_client.AppiumDriver;
+
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import origamiV2.origamiV2PageObjects.AppHeaderPageObjects;
+import origamiV2.origamiV2PageObjects.ContextualHelpPageObjects;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import origamiV2.origamiV2PageObjects.AppHeaderPageObjects;
-import origamiV2.origamiV2PageObjects.ContextualHelpPageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,6 +22,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
+import compounds.compoundsPageObjects.CalendarFunctionsPageObjects;
 import elements.elementsPageObjects.ButtonsPageObjects;
 import elements.elementsPageObjects.CalendarPageObjects;
 import elements.elementsPageObjects.InputsPageObjects;
@@ -40,6 +43,7 @@ public class BaseClass {
     public static AppHeaderPageObjects appHeaderPgObj;
     public static ContextualHelpPageObjects conxHelpPgObj;
     public static CalendarPageObjects clndrPgObj;
+    public static CalendarFunctionsPageObjects clndrFuncPgObj;
     public static CommonUtils commonUtils;
     final static String USERNAME = System.getenv("SAUCE_USERNAME");
     final static String ACCESS_KEY = System.getenv("SAUCE_ACCESS_KEY");
@@ -52,7 +56,7 @@ public class BaseClass {
 
         caps = new DesiredCapabilities();
 
-        //The below conditions is to set capabilities for desktop run and in elements_sdk/compounds_sdk/origami_v2/.xml -> set mobile to 'off'/groups to 'desktop' and desktop to 'on' and followed by platform details
+        //The below conditions is to set capabilities for desktop run and in testng.xml -> set mobile to 'off'/groups to 'desktop' and desktop to 'on' and followed by platform details
         if (runEnv.equals("sauce")) {
 
             if (desktop.equals("on")) {
@@ -80,11 +84,12 @@ public class BaseClass {
                 conxHelpPgObj = new ContextualHelpPageObjects(driver);
                 inputsPgObj = new InputsPageObjects(driver);
                 clndrPgObj = new CalendarPageObjects(driver);
+                clndrFuncPgObj = new CalendarFunctionsPageObjects(driver);
                 commonUtils = new CommonUtils(driver);
                 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             }
 
-            //The below conditions is to set capabilities for mob device and in elements_sdk/compounds_sdk/origami_v2/.xml -> set desktop to 'off'/groups to 'mobile' and mobile to 'on' and followed by platform details
+            //The below conditions is to set capabilities for mob device and in testng.xml -> set desktop to 'off'/groups to 'mobile' and mobile to 'on' and followed by platform details
             else if (mobile.equals("on")) {
                 caps.setCapability(MobileCapabilityType.DEVICE_NAME, mobDeviceName);
                 caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, mobilePlatformVer);
@@ -104,12 +109,13 @@ public class BaseClass {
                 conxHelpPgObj = new ContextualHelpPageObjects(appium);
                 inputsPgObj = new InputsPageObjects(appium);
                 clndrPgObj = new CalendarPageObjects(appium);
+                clndrFuncPgObj = new CalendarFunctionsPageObjects(appium);
                 commonUtils = new CommonUtils(appium);
                 appium.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             }
         }
 
-        //The below else condition is to launch browser driver on your local machine. In elements_sdk.xml -> set runEnv != sauce
+        //The below else condition is to launch browser driver on your local machine. In testng.xml -> set runEnv != sauce
         else {
             if (localBrowser.equals("firefox")) {
                 driver = new FirefoxDriver();
@@ -119,6 +125,8 @@ public class BaseClass {
                 appHeaderPgObj = new AppHeaderPageObjects(driver);
                 conxHelpPgObj = new ContextualHelpPageObjects(driver);
                 inputsPgObj = new InputsPageObjects(driver);
+                clndrPgObj = new CalendarPageObjects(driver);
+                clndrFuncPgObj = new CalendarFunctionsPageObjects(driver);
                 commonUtils = new CommonUtils(driver);
                 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             }
