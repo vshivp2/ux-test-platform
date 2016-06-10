@@ -20,6 +20,7 @@
     <parameter name="mobBrowser" value="Safari"></parameter><!-- browser eg.safari, chrome -->
     <parameter name="appiumVer" value="1.5.2"></parameter><!-- version of appium on sauce -->
 
+
     <test name="ElementsTests">
         <groups>
             <run>
