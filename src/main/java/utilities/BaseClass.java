@@ -27,6 +27,7 @@ import elements.elementsPageObjects.CalendarPageObjects;
 import elements.elementsPageObjects.InputsPageObjects;
 import elements.elementsPageObjects.ResponsiveUtilitiesPageObjects;
 import elements.elementsPageObjects.TypographyPageObjects;
+import origamiV2.origamiV2PageObjects.DrawerPageObjects;
 
 /**
  * Created by umahaea on 2/3/16.
@@ -41,6 +42,7 @@ public class BaseClass {
     public static ButtonsPageObjects btnPgObj;
     public static AppHeaderPageObjects appHeaderPgObj;
     public static ContextualHelpPageObjects conxHelpPgObj;
+    public static DrawerPageObjects drawerPgObj;
     public static CalendarPageObjects clndrPgObj;
     public static ComponentArchetype compArchtypePgObj;
     public static CommonUtils commonUtils;
@@ -82,6 +84,7 @@ public class BaseClass {
                 btnPgObj = new ButtonsPageObjects(driver);
                 appHeaderPgObj = new AppHeaderPageObjects(driver);
                 conxHelpPgObj = new ContextualHelpPageObjects(driver);
+                drawerPgObj = new DrawerPageObjects(driver);
                 inputsPgObj = new InputsPageObjects(driver);
                 clndrPgObj = new CalendarPageObjects(driver);
                 compArchtypePgObj= new ComponentArchetype(driver);
@@ -108,6 +111,7 @@ public class BaseClass {
                 btnPgObj = new ButtonsPageObjects(appium);
                 appHeaderPgObj = new AppHeaderPageObjects(appium);
                 conxHelpPgObj = new ContextualHelpPageObjects(appium);
+                drawerPgObj = new DrawerPageObjects(appium);
                 inputsPgObj = new InputsPageObjects(appium);
                 clndrPgObj = new CalendarPageObjects(appium);
                 compArchtypePgObj= new ComponentArchetype(appium);
