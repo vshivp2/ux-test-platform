@@ -32,9 +32,9 @@ cp elements/dist/css/elements.css /ux-test-platform/src/main/java/elements/css/
 mvn test
 </pre>
 
-NOTE: Mobile tests runs only on Sauce Machine.
+NOTE: Mobile tests runs only on Sauce Machine. But still it can be triggered locally to run on Sauce via Sauce Connect. Follow this <a href="https://neo.pearson.com/docs/DOC-617300">link</a> for detailed steps.
 
-##How to run your tests in sauce:
+##How to run your tests in sauce via Travis CI:
 1. Leave the default testng.xml settings. Make sure to have the below parameters always set to:
 <pre>
   &lt;parameter name="runEnv" value="sauce"&gt;&lt;/parameter&gt;
