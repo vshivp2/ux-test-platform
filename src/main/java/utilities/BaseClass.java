@@ -130,6 +130,7 @@ public class BaseClass {
                     btnPgObj = new ButtonsPageObjects(driver);
                     appHeaderPgObj = new AppHeaderPageObjects(driver);
                     conxHelpPgObj = new ContextualHelpPageObjects(driver);
+                    drawerPgObj = new DrawerPageObjects(driver);
                     inputsPgObj = new InputsPageObjects(driver);
                     clndrPgObj = new CalendarPageObjects(driver);
                     commonUtils = new CommonUtils(driver);
@@ -143,6 +144,7 @@ public class BaseClass {
                     btnPgObj = new ButtonsPageObjects(driver);
                     appHeaderPgObj = new AppHeaderPageObjects(driver);
                     conxHelpPgObj = new ContextualHelpPageObjects(driver);
+                    drawerPgObj= new DrawerPageObjects(driver);
                     inputsPgObj = new InputsPageObjects(driver);
                     clndrPgObj = new CalendarPageObjects(driver);
                     commonUtils = new CommonUtils(driver);
@@ -166,6 +168,7 @@ public class BaseClass {
                 btnPgObj = new ButtonsPageObjects(appium);
                 appHeaderPgObj = new AppHeaderPageObjects(appium);
                 conxHelpPgObj = new ContextualHelpPageObjects(appium);
+                drawerPgObj = new DrawerPageObjects(appium);
                 inputsPgObj = new InputsPageObjects(appium);
                 clndrPgObj = new CalendarPageObjects(appium);
                 commonUtils = new CommonUtils(appium);

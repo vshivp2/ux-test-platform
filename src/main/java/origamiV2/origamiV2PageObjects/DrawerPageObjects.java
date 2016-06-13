@@ -21,20 +21,20 @@ public class DrawerPageObjects {
     }
 
     public By toggleLeftDrawerLink = By.linkText("Toggle Left Drawer");
-    public By toggleRightDrawerLink = By.xpath("Toggle Right Drawer");
+    public By toggleRightDrawerLink = By.linkText("Toggle Right Drawer");
 
-    public By openLeftDrawerLink = By.xpath("Open Left Drawer");
-    public By openRightDrawerLink = By.xpath("Open Right Drawer");
+    public By openLeftDrawerLink = By.linkText("Open Left Drawer");
+    public By openRightDrawerLink = By.linkText("Open Right Drawer");
 
-    public By closeLeftDrawerLink = By.xpath("Close Left Drawer");
-    public By closeRightDrawerLink = By.xpath("Close Right Drawer");
+    public By closeLeftDrawerLink = By.linkText("Close Left Drawer");
+    public By closeRightDrawerLink = By.linkText("Close Right Drawer");
 
     public By closeLeftDrawer = By.xpath("//div[@class='o-drawer-animated o-drawer o-drawer-left o-drawer-open']/a");
     public By closeRightDrawer = By.xpath("//div[@class='o-drawer-right o-drawer-animated o-drawer o-drawer-open']/a");
 
-    public By leftDrawerOpened = By.xpath("//div[@class='o-drawer-animated o-drawer o-drawer-left o-drawer-open'][@style='display: block; background-color: rgb(255, 255, 255);']");
-    public By leftDrawerClosed = By.xpath("//div[@class='o-drawer-animated o-drawer o-drawer-left'][@style='display: none;']");
+    public By leftDrawerOpened = By.xpath("//div[@class='o-drawer-animated o-drawer o-drawer-left o-drawer-open']");
+    public By leftDrawerClosed = By.xpath("//div[@class='o-drawer-animated o-drawer o-drawer-left']");
 
-    public By rightDrawerOpened = By.xpath("//div[@class='o-drawer-right o-drawer-animated o-drawer o-drawer-open'][@style='display: block; background-color: rgb(255, 255, 255);']");
+    public By rightDrawerOpened = By.xpath("//div[@class='o-drawer-right o-drawer-animated o-drawer o-drawer-open']");
     public By rightDrawerClosed = By.xpath("//div[@class='o-drawer-right o-drawer-animated o-drawer'][@style='display: none;']");
 }
