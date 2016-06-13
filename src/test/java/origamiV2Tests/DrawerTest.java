@@ -3,10 +3,13 @@ package origamiV2Tests;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utilities.BaseClass;
 
+import java.lang.reflect.Method;
 import java.util.NoSuchElementException;
 
 /**
@@ -109,5 +112,15 @@ public class DrawerTest extends BaseClass {
         isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
         System.out.println(isDrawerOpened);
         Assert.assertFalse(isDrawerOpened);
+    }
+
+    @BeforeMethod(alwaysRun = true)
+    private void beforeMethod(Method method) throws Exception {
+        System.out.println("Test Method----> " + this.getClass().getSimpleName() + "::" + method.getName());
+    }
+
+    @AfterMethod(alwaysRun = true)
+    private void afterMethod() {
+        System.out.println("_________________________________________________");
     }
 }
