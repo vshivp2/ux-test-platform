@@ -64,6 +64,7 @@ public class DrawerTest extends BaseClass {
             isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
             Assert.assertFalse(isDrawerOpened);
         } catch (NoSuchElementException e) {
+            System.out.println(e.getSuppressed());
         }
 
         commonUtils.click(toggleDrawerLinkElement);
@@ -80,6 +81,7 @@ public class DrawerTest extends BaseClass {
             Assert.assertFalse(isDrawerOpened);
         }
         catch (NoSuchElementException e){
+            System.out.println("No such element present");
         }
     }
 
