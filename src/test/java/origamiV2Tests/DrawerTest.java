@@ -7,6 +7,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utilities.BaseClass;
 
+import java.util.NoSuchElementException;
+
 /**
  * Created by umahaea on 6/10/16.
  */
@@ -49,17 +51,20 @@ public class DrawerTest extends BaseClass {
     @Test(testName = "Toggle Drawer Test", dataProvider = "Toggle Drawer Test Data", groups = "desktop-ci")
     private void toggleDrawerTest(String drawerType, By openDrawerLinkElement, By toggleDrawerLinkElement, By closeDrawerLinkElement, By drawerOpenStatusElement) throws Exception {
         commonUtils.getUrl(drawerUrl);
+
         commonUtils.click(openDrawerLinkElement);
         Thread.sleep(1000);
         isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
         System.out.println(isDrawerOpened);
         Assert.assertTrue(isDrawerOpened);
 
-        commonUtils.click(toggleDrawerLinkElement);
-        Thread.sleep(1000);
-        isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
-        System.out.println(isDrawerOpened);
-        Assert.assertFalse(isDrawerOpened);
+        try {
+            commonUtils.click(toggleDrawerLinkElement);
+            Thread.sleep(1000);
+            isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
+            Assert.assertFalse(isDrawerOpened);
+        } catch (NoSuchElementException e) {
+        }
 
         commonUtils.click(toggleDrawerLinkElement);
         Thread.sleep(1000);
@@ -67,11 +72,15 @@ public class DrawerTest extends BaseClass {
         System.out.println(isDrawerOpened);
         Assert.assertTrue(isDrawerOpened);
 
-        commonUtils.click(closeDrawerLinkElement);
-        Thread.sleep(1000);
-        isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
-        System.out.println(isDrawerOpened);
-        Assert.assertFalse(isDrawerOpened);
+        try {
+            commonUtils.click(closeDrawerLinkElement);
+            Thread.sleep(1000);
+            isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
+            System.out.println(isDrawerOpened);
+            Assert.assertFalse(isDrawerOpened);
+        }
+        catch (NoSuchElementException e){
+        }
     }
 
     //Close Drawer
