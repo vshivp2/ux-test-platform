@@ -79,16 +79,7 @@ public class BaseClass {
                 caps.setCapability("tunnel-identifier", System.getenv("TRAVIS_JOB_NUMBER"));
                 caps.setCapability("build", System.getenv("TRAVIS_BUILD_NUMBER"));
                 driver = new RemoteWebDriver(new URL(URL), caps);
-                respPgObj = new ResponsiveUtilitiesPageObjects(driver);
-                typoPgObj = new TypographyPageObjects(driver);
-                btnPgObj = new ButtonsPageObjects(driver);
-                appHeaderPgObj = new AppHeaderPageObjects(driver);
-                conxHelpPgObj = new ContextualHelpPageObjects(driver);
-                drawerPgObj = new DrawerPageObjects(driver);
-                inputsPgObj = new InputsPageObjects(driver);
-                clndrPgObj = new CalendarPageObjects(driver);
-                compArchtypePgObj= new ComponentArchetype(driver);
-                commonUtils = new CommonUtils(driver);
+                includePageObjects();
                 driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             }
 
@@ -106,16 +97,6 @@ public class BaseClass {
                 } else if (appiumDriver.equalsIgnoreCase("android")) {
                     appium = new AndroidDriver(new URL(URL), caps);
                 }
-                respPgObj = new ResponsiveUtilitiesPageObjects(appium);
-                typoPgObj = new TypographyPageObjects(appium);
-                btnPgObj = new ButtonsPageObjects(appium);
-                appHeaderPgObj = new AppHeaderPageObjects(appium);
-                conxHelpPgObj = new ContextualHelpPageObjects(appium);
-                drawerPgObj = new DrawerPageObjects(appium);
-                inputsPgObj = new InputsPageObjects(appium);
-                clndrPgObj = new CalendarPageObjects(appium);
-                compArchtypePgObj= new ComponentArchetype(appium);
-                commonUtils = new CommonUtils(appium);
                 appium.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             }
         }
@@ -125,29 +106,13 @@ public class BaseClass {
             if (desktop.equals("on")) {
                 if (localBrowser.equals("firefox")) {
                     driver = new FirefoxDriver();
-                    respPgObj = new ResponsiveUtilitiesPageObjects(driver);
-                    typoPgObj = new TypographyPageObjects(driver);
-                    btnPgObj = new ButtonsPageObjects(driver);
-                    appHeaderPgObj = new AppHeaderPageObjects(driver);
-                    conxHelpPgObj = new ContextualHelpPageObjects(driver);
-                    drawerPgObj = new DrawerPageObjects(driver);
-                    inputsPgObj = new InputsPageObjects(driver);
-                    clndrPgObj = new CalendarPageObjects(driver);
-                    commonUtils = new CommonUtils(driver);
+                    includePageObjects();
                     driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
                 }
                 if (localBrowser.equals("chrome")) {
                     CommonUtils.setupChromeDriver();
                     driver = new ChromeDriver();
-                    respPgObj = new ResponsiveUtilitiesPageObjects(driver);
-                    typoPgObj = new TypographyPageObjects(driver);
-                    btnPgObj = new ButtonsPageObjects(driver);
-                    appHeaderPgObj = new AppHeaderPageObjects(driver);
-                    conxHelpPgObj = new ContextualHelpPageObjects(driver);
-                    drawerPgObj= new DrawerPageObjects(driver);
-                    inputsPgObj = new InputsPageObjects(driver);
-                    clndrPgObj = new CalendarPageObjects(driver);
-                    commonUtils = new CommonUtils(driver);
+                    includePageObjects();
                     driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
                 }
             }
@@ -163,19 +128,38 @@ public class BaseClass {
                 } else if (appiumDriver.equalsIgnoreCase("android")) {
                     appium = new AndroidDriver(new URL(URL), caps);
                 }
-                respPgObj = new ResponsiveUtilitiesPageObjects(appium);
-                typoPgObj = new TypographyPageObjects(appium);
-                btnPgObj = new ButtonsPageObjects(appium);
-                appHeaderPgObj = new AppHeaderPageObjects(appium);
-                conxHelpPgObj = new ContextualHelpPageObjects(appium);
-                drawerPgObj = new DrawerPageObjects(appium);
-                inputsPgObj = new InputsPageObjects(appium);
-                clndrPgObj = new CalendarPageObjects(appium);
-                commonUtils = new CommonUtils(appium);
+                includePageObjects();
                 appium.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             }
         }
     }
+
+    public void includePageObjects(){
+
+        respPgObj = new ResponsiveUtilitiesPageObjects(driver);
+        typoPgObj = new TypographyPageObjects(driver);
+        btnPgObj = new ButtonsPageObjects(driver);
+        appHeaderPgObj = new AppHeaderPageObjects(driver);
+        conxHelpPgObj = new ContextualHelpPageObjects(driver);
+        drawerPgObj = new DrawerPageObjects(driver);
+        inputsPgObj = new InputsPageObjects(driver);
+        clndrPgObj = new CalendarPageObjects(driver);
+        compArchtypePgObj= new ComponentArchetype(driver);
+        commonUtils = new CommonUtils(driver);
+
+
+        /*respPgObj = new ResponsiveUtilitiesPageObjects(appium);
+        typoPgObj = new TypographyPageObjects(appium);
+        btnPgObj = new ButtonsPageObjects(appium);
+        appHeaderPgObj = new AppHeaderPageObjects(appium);
+        conxHelpPgObj = new ContextualHelpPageObjects(appium);
+        drawerPgObj = new DrawerPageObjects(appium);
+        inputsPgObj = new InputsPageObjects(appium);
+        clndrPgObj = new CalendarPageObjects(appium);
+        compArchtypePgObj= new ComponentArchetype(appium);
+        commonUtils = new CommonUtils(appium);*/
+    }
+
 
     @Parameters({"mobile"})
     @AfterSuite(alwaysRun = true)

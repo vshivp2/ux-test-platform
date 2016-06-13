@@ -12,7 +12,7 @@ import utilities.BaseClass;
  */
 public class DrawerTest extends BaseClass {
 
-    private final String drawerUrl = "http://localhost:8000/src/main/java/origamiV2/fixtures/contextualHelp/app-header-SignOutMode.html";
+    private final String drawerUrl = "http://localhost:8000/src/main/java/origamiV2/fixtures/drawer/drawer.html";
     //private final String drawerUrl = "file:///Users/umahaea/Documents/workspace/ux-test-platform/src/main/java/origamiV2/fixtures/drawer/drawer.html";
     private boolean isDrawerOpened = false;
 
