@@ -36,5 +36,7 @@ public class DrawerPageObjects {
     public By leftDrawerClosed = By.xpath("//div[@class='o-drawer-animated o-drawer o-drawer-left']");
 
     public By rightDrawerOpened = By.xpath("//div[@class='o-drawer-right o-drawer-animated o-drawer o-drawer-open']");
-    public By rightDrawerClosed = By.xpath("//div[@class='o-drawer-right o-drawer-animated o-drawer'][@style='display: none;']");
+    public By rightDrawerClosed = By.xpath("//div[@class='o-drawer-right o-drawer-animated o-drawer']");
+
+    public By useDataTargetButton=By.xpath("//button[@data-target='#drawer-example']");
 }

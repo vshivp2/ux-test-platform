@@ -18,8 +18,10 @@ import java.util.NoSuchElementException;
 public class DrawerTest extends BaseClass {
 
     private final String drawerUrl = "http://localhost:8000/src/main/java/origamiV2/fixtures/drawer/drawer.html";
-    //private final String drawerUrl = "file:///Users/umahaea/Documents/workspace/ux-test-platform/src/main/java/origamiV2/fixtures/drawer/drawer.html";
     private boolean isDrawerOpened = false;
+    private boolean isDrawerClosed = false;
+    private String contentInDrawer="";
+    private boolean isContentInDrawer=false;
 
     final static Logger log = Logger.getLogger(DrawerTest.class.getName());
 
@@ -35,10 +37,9 @@ public class DrawerTest extends BaseClass {
     @Test(testName = "Open Drawer Test", dataProvider = "Open Drawer Test Data", groups = "desktop-ci")
     private void openDrawerTest(String drawerType, By drawerLinkElement, By drawerOpenStatusElement) throws Exception {
         commonUtils.getUrl(drawerUrl);
+
         commonUtils.click(drawerLinkElement);
-        Thread.sleep(1000);
         isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
-        System.out.println("isDrawerOpened: " + isDrawerOpened);
         Assert.assertTrue(isDrawerOpened);
     }
 
@@ -46,72 +47,66 @@ public class DrawerTest extends BaseClass {
     @DataProvider(name = "Toggle Drawer Test Data")
     public Object[][] getToggleDrawerTest() {
         return new Object[][]{
-                {"left drawer", drawerPgObj.openLeftDrawerLink, drawerPgObj.toggleLeftDrawerLink, drawerPgObj.closeLeftDrawerLink, drawerPgObj.leftDrawerOpened},
-                {"right drawer", drawerPgObj.openRightDrawerLink, drawerPgObj.toggleRightDrawerLink, drawerPgObj.closeRightDrawerLink, drawerPgObj.rightDrawerOpened}
+                {"left drawer", drawerPgObj.openLeftDrawerLink, drawerPgObj.toggleLeftDrawerLink, drawerPgObj.closeLeftDrawerLink, drawerPgObj.leftDrawerOpened, drawerPgObj.leftDrawerClosed},
+                {"right drawer", drawerPgObj.openRightDrawerLink, drawerPgObj.toggleRightDrawerLink, drawerPgObj.closeRightDrawerLink, drawerPgObj.rightDrawerOpened, drawerPgObj.rightDrawerClosed}
         };
     }
 
     @Test(testName = "Toggle Drawer Test", dataProvider = "Toggle Drawer Test Data", groups = "desktop-ci")
-    private void toggleDrawerTest(String drawerType, By openDrawerLinkElement, By toggleDrawerLinkElement, By closeDrawerLinkElement, By drawerOpenStatusElement) throws Exception {
+    private void toggleDrawerTest(String drawerType, By openDrawerLinkElement, By toggleDrawerLinkElement, By closeDrawerLinkElement, By drawerOpenStatusElement, By drawerClosedStatusElement) throws Exception {
         commonUtils.getUrl(drawerUrl);
 
         commonUtils.click(openDrawerLinkElement);
-        Thread.sleep(1000);
         isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
-        System.out.println(isDrawerOpened);
         Assert.assertTrue(isDrawerOpened);
-
-        try {
-            commonUtils.click(toggleDrawerLinkElement);
-            Thread.sleep(1000);
-            isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
-            Assert.assertFalse(isDrawerOpened);
-        } catch (NoSuchElementException e) {
-            System.out.println(e.getSuppressed());
-        }
 
         commonUtils.click(toggleDrawerLinkElement);
-        Thread.sleep(1000);
+        isDrawerClosed = commonUtils.isElementsVisibleOnPage(drawerClosedStatusElement);
+        Assert.assertTrue(isDrawerClosed);
+
+        commonUtils.click(toggleDrawerLinkElement);
         isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
-        System.out.println(isDrawerOpened);
         Assert.assertTrue(isDrawerOpened);
 
-        try {
-            commonUtils.click(closeDrawerLinkElement);
-            Thread.sleep(1000);
-            isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
-            System.out.println(isDrawerOpened);
-            Assert.assertFalse(isDrawerOpened);
-        }
-        catch (NoSuchElementException e){
-            System.out.println("No such element present");
-        }
+        commonUtils.click(closeDrawerLinkElement);
+        isDrawerClosed = commonUtils.isElementsVisibleOnPage(drawerClosedStatusElement);
+        Assert.assertTrue(isDrawerClosed);
     }
 
     //Close Drawer
     @DataProvider(name = "Close Drawer Test Data")
     public Object[][] getCloseDrawerTest() {
         return new Object[][]{
-                {"left drawer", drawerPgObj.openLeftDrawerLink, drawerPgObj.closeLeftDrawerLink, drawerPgObj.leftDrawerOpened},
-                {"right drawer", drawerPgObj.openRightDrawerLink, drawerPgObj.closeRightDrawerLink, drawerPgObj.rightDrawerOpened}
+                {"left drawer", drawerPgObj.openLeftDrawerLink, drawerPgObj.closeLeftDrawerLink, drawerPgObj.leftDrawerOpened, drawerPgObj.leftDrawerClosed},
+                {"right drawer", drawerPgObj.openRightDrawerLink, drawerPgObj.closeRightDrawerLink, drawerPgObj.rightDrawerOpened, drawerPgObj.rightDrawerClosed}
         };
     }
 
     @Test(testName = "Close Drawer Test", dataProvider = "Close Drawer Test Data", groups = "desktop-ci")
-    private void closeDrawerTest(String drawerType, By openDrawerLinkElement, By closeDrawerLinkElement, By drawerOpenStatusElement) throws Exception {
+    private void closeDrawerTest(String drawerType, By openDrawerLinkElement, By closeDrawerLinkElement, By drawerOpenStatusElement, By drawerClosedStatusElement) throws Exception {
         commonUtils.getUrl(drawerUrl);
-        commonUtils.click(openDrawerLinkElement);
-        Thread.sleep(1000);
 
+        commonUtils.click(openDrawerLinkElement);
         isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
-        System.out.println("isDrawerOpened: " + isDrawerOpened);
         Assert.assertTrue(isDrawerOpened);
 
         commonUtils.click(closeDrawerLinkElement);
-        Thread.sleep(1000);
-        isDrawerOpened = commonUtils.isElementPresent(drawerOpenStatusElement);
-        System.out.println(isDrawerOpened);
-        Assert.assertFalse(isDrawerOpened);
+        isDrawerClosed = commonUtils.isElementPresent(drawerClosedStatusElement);
+        Assert.assertFalse(isDrawerClosed);
+    }
+
+    //User data-target
+    @Test(testName = "Use Data Target Test", groups = "desktop-ci")
+    private void useDataTargetForDrawerTest() throws Exception {
+        String text="Using data-target instead of href.";
+        commonUtils.getUrl(drawerUrl);
+
+        commonUtils.click(drawerPgObj.useDataTargetButton);
+        isDrawerOpened = commonUtils.isElementPresent(drawerPgObj.rightDrawerOpened);
+        Assert.assertTrue(isDrawerOpened);
+        contentInDrawer=commonUtils.getText(drawerPgObj.rightDrawerOpened);
+        isContentInDrawer = commonUtils.assertValue(contentInDrawer,text,"Error: Data Target is not working as per the spec");
+        Assert.assertTrue(isContentInDrawer);
     }
 
     @BeforeMethod(alwaysRun = true)
